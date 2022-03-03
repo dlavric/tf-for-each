@@ -39,18 +39,18 @@ This is the output of initializing the Terraform code:
 Initializing the backend...
 
 Initializing provider plugins...
+- Finding hashicorp/aws versions matching "4.3.0"...
+- Installing hashicorp/aws v4.3.0...
+- Installed hashicorp/aws v4.3.0 (self-signed, key ID 34365D9472D7468F)
 
+Partner and community providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://www.terraform.io/docs/plugins/signing.html
 
-Warning: Provider source not supported in Terraform v0.12
-
-  on provider.tf line 3, in terraform:
-   3:     aws = {
-   4:       source = "hashicorp/aws"
-   5:       version = "4.3.0"
-   6:     }
-
-A source was declared for provider aws. Terraform v0.12 does not support the
-provider source attribute. It will be ignored.
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
 
 Terraform has been successfully initialized!
 
@@ -61,7 +61,6 @@ should now work.
 If you ever set or change modules or backend configuration for Terraform,
 rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
-
 ```
 
 - Apply the changes with Terraform
@@ -123,32 +122,20 @@ Terraform will perform the following actions:
 
 Plan: 4 to add, 0 to change, 0 to destroy.
 
-
-Warning: Provider source not supported in Terraform v0.12
-
-  on provider.tf line 3, in terraform:
-   3:     aws = {
-   4:       source = "hashicorp/aws"
-   5:       version = "4.3.0"
-   6:     }
-
-A source was declared for provider aws. Terraform v0.12 does not support the
-provider source attribute. It will be ignored.
-
 Do you want to perform these actions?
   Terraform will perform the actions described above.
   Only 'yes' will be accepted to approve.
 
   Enter a value: yes
 
-aws_iam_user.the-accounts["Alice"]: Creating...
+aws_iam_user.the-accounts["Dottie"]: Creating...
 aws_iam_user.the-accounts["Todd"]: Creating...
 aws_iam_user.the-accounts["James"]: Creating...
-aws_iam_user.the-accounts["Dottie"]: Creating...
-aws_iam_user.the-accounts["Todd"]: Creation complete after 2s [id=Todd]
-aws_iam_user.the-accounts["Dottie"]: Creation complete after 2s [id=Dottie]
-aws_iam_user.the-accounts["Alice"]: Creation complete after 2s [id=Alice]
-aws_iam_user.the-accounts["James"]: Creation complete after 2s [id=James]
+aws_iam_user.the-accounts["Alice"]: Creating...
+aws_iam_user.the-accounts["Todd"]: Creation complete after 1s [id=Todd]
+aws_iam_user.the-accounts["Alice"]: Creation complete after 1s [id=Alice]
+aws_iam_user.the-accounts["James"]: Creation complete after 1s [id=James]
+aws_iam_user.the-accounts["Dottie"]: Creation complete after 1s [id=Dottie]
 
 Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
 ```
@@ -156,11 +143,6 @@ Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
 - Destroy the resources 
 ```shell
 terraform destroy
-
-aws_iam_user.the-accounts["James"]: Refreshing state... [id=James]
-aws_iam_user.the-accounts["Dottie"]: Refreshing state... [id=Dottie]
-aws_iam_user.the-accounts["Alice"]: Refreshing state... [id=Alice]
-aws_iam_user.the-accounts["Todd"]: Refreshing state... [id=Todd]
 
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
@@ -175,7 +157,6 @@ Terraform will perform the following actions:
       - id            = "Alice" -> null
       - name          = "Alice" -> null
       - path          = "/" -> null
-      - tags          = {} -> null
       - tags_all      = {} -> null
       - unique_id     = " " -> null
     }
@@ -187,7 +168,6 @@ Terraform will perform the following actions:
       - id            = "Dottie" -> null
       - name          = "Dottie" -> null
       - path          = "/" -> null
-      - tags          = {} -> null
       - tags_all      = {} -> null
       - unique_id     = " " -> null
     }
@@ -199,7 +179,6 @@ Terraform will perform the following actions:
       - id            = "James" -> null
       - name          = "James" -> null
       - path          = "/" -> null
-      - tags          = {} -> null
       - tags_all      = {} -> null
       - unique_id     = " " -> null
     }
@@ -211,24 +190,11 @@ Terraform will perform the following actions:
       - id            = "Todd" -> null
       - name          = "Todd" -> null
       - path          = "/" -> null
-      - tags          = {} -> null
       - tags_all      = {} -> null
       - unique_id     = " " -> null
     }
 
 Plan: 0 to add, 0 to change, 4 to destroy.
-
-
-Warning: Provider source not supported in Terraform v0.12
-
-  on provider.tf line 3, in terraform:
-   3:     aws = {
-   4:       source = "hashicorp/aws"
-   5:       version = "4.3.0"
-   6:     }
-
-A source was declared for provider aws. Terraform v0.12 does not support the
-provider source attribute. It will be ignored.
 
 Do you really want to destroy all resources?
   Terraform will destroy all your managed infrastructure, as shown above.
@@ -236,13 +202,13 @@ Do you really want to destroy all resources?
 
   Enter a value: yes
 
-aws_iam_user.the-accounts["James"]: Destroying... [id=James]
 aws_iam_user.the-accounts["Alice"]: Destroying... [id=Alice]
-aws_iam_user.the-accounts["Dottie"]: Destroying... [id=Dottie]
 aws_iam_user.the-accounts["Todd"]: Destroying... [id=Todd]
+aws_iam_user.the-accounts["James"]: Destroying... [id=James]
+aws_iam_user.the-accounts["Dottie"]: Destroying... [id=Dottie]
 aws_iam_user.the-accounts["Todd"]: Destruction complete after 0s
-aws_iam_user.the-accounts["Dottie"]: Destruction complete after 0s
 aws_iam_user.the-accounts["Alice"]: Destruction complete after 0s
+aws_iam_user.the-accounts["Dottie"]: Destruction complete after 0s
 aws_iam_user.the-accounts["James"]: Destruction complete after 0s
 
 Destroy complete! Resources: 4 destroyed.
